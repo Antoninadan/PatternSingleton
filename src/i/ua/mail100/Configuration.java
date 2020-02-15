@@ -17,12 +17,11 @@ public class Configuration {
     private Configuration() {
         props = new Properties();
         try {
-            FileInputStream fis = new FileInputStream(
-                    new File("props.txt"));
+            FileInputStream fis = new FileInputStream(new File("props.txt"));
             props.load(fis);
         }
         catch (Exception e) {
-            // обработайте ошибку чтения конфигурации
+            System.err.println("ОШИБКА: Файл свойств отсуствует!");
         }
     }
 
@@ -38,7 +37,7 @@ public class Configuration {
         if (props.containsKey(key))
             value = (String) props.get(key);
         else {
-            // сообщите о том, что свойство не найдено
+            System.out.println("Not found");
         }
         return value;
     }
